@@ -1,5 +1,3 @@
-#include <stdio.h>
-
 /**
  * infinite_add - Adds two numbers.
  * @n1: Pointer to the first number as a string.
@@ -41,12 +39,16 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
         r[k] = (sum % 10) + '0';
 
         i--;
-        j++;
+        j--;
         k++;
     }
 
+    if (k >= size_r - 1)
+        return 0;
+
     r[k] = '\0';
 
+   
     for (i = 0, j = k - 1; i < j; i++, j--)
     {
         char temp = r[i];
@@ -56,3 +58,4 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 
     return r;
 }
+
