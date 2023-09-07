@@ -3,20 +3,20 @@
 #include <stdlib.h>
 
 /**
- *  * create_array - creates an array of chars and
- *   * initializes it with a specific char.
- *    * @size: the size of the array to be created
- *     * @c: the character to initialize the array with
- *      *
- *       * Return: a pointer to the created array, or NULL if it fails
- *        */
+ *create_array - creates an array of chars and
+ *initializes it with a specific char.
+ *@size: the size of the array to be created
+ *@c: the character to initialize the array with
+ *
+ *Return: a pointer to the created array, or NULL if it fails
+ */
 
 char *create_array(unsigned int size, char c)
 {
-		char *arr;
-			unsigned int i;
+	char *arr;
+	unsigned int i;
 
-				if (size == 0)
+	if (size == 0)
 						{
 									return (NULL);
 										}
@@ -32,5 +32,4 @@ char *create_array(unsigned int size, char c)
 												arr[i] = c;
 													}
 
-								return (arr);
-}
+								return (arr;)
