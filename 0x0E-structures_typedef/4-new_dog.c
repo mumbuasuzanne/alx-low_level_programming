@@ -1,42 +1,53 @@
 #include "dog.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
 /**
- * new_dog - Creates a new dog with given name, age, and owner.
- * @name: Name of the new dog.
- * @age: Age of the new dog.
- * @owner: Owner of the new dog.
+ * new_dog - creates a new dog
+ * @name: name of dog
+ * @age: age of dog
+ * @owner: owner of dog
  *
- * Return: Pointer to the newly created dog structure.
- *         NULL if memory allocation fails or if any argument is NULL.
+ * Return: pointer to new dog
  */
 dog_t *new_dog(char *name, float age, char *owner)
 {
-    if (name == NULL || owner == NULL)
-        return (NULL);
+	dog_t *dog;
+	int i, j, k;
+	char *name2, *owner2;
 
-    dog_t *new_dog_ptr = malloc(sizeof(dog_t));
-    if (new_dog_ptr == NULL)
-        return (NULL);
+	dog = malloc(sizeof(dog_t));
+	if (dog == NULL)
+		return (NULL);
 
-    new_dog_ptr->name = strdup(name);
-    if (new_dog_ptr->name == NULL)
-    {
-        free(new_dog_ptr);
-        return (NULL);
-    }
+	for (i = 0; name[i]; i++)
+		;
+	for (j = 0; owner[j]; j++)
+		;
 
-    new_dog_ptr->age = age;
+	name2 = malloc(sizeof(char) * (i + 1));
+	if (name2 == NULL)
+	{
+		free(dog);
+		return (NULL);
+	}
 
-    new_dog_ptr->owner = strdup(owner);
-    if (new_dog_ptr->owner == NULL)
-    {
-        free(new_dog_ptr->name);
-        free(new_dog_ptr);
-        return (NULL);
-    }
+	owner2 = malloc(sizeof(char) * (j + 1));
+	if (owner2 == NULL)
+	{
+		free(name2);
+		free(dog);
+		return (NULL);
+	}
 
-    return (new_dog_ptr);
+	for (k = 0; k <= i; k++)
+		name2[k] = name[k];
+	for (k = 0; k <= j; k++)
+		owner2[k] = owner[k];
+
+	dog->name = name2;
+	dog->age = age;
+	dog->owner = owner2;
+
+	return (dog);
 }
